@@ -10,6 +10,9 @@ import Link from 'next/link';
 
 export default async function Home() {
   const come = await fetch('https://akil-backend.onrender.com/opportunities/search')
+  if (!come.ok){
+    return <div>network problem</div>
+  }
   const jobs = await come.json()
   console.log(jobs) 
   

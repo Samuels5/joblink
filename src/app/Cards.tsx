@@ -3,9 +3,10 @@ import Image from 'next/image'
 
 const Cards = async ({job, ind}: {job:any, ind:number}) => {
   const come = await fetch('https://akil-backend.onrender.com/opportunities/search')
+  if (!come.ok){
+    return <div>network problem</div>
+  }
   const jobs = await come.json()
-  console.log(job.title)
-  const im = '/' + job.title + '.png'
   return (
     <div className='p-6 rounded-3xl border my-9 border-gray-400 divide-black'>
     <div className='  flex'>
@@ -24,7 +25,7 @@ const Cards = async ({job, ind}: {job:any, ind:number}) => {
     </div>
     </div>
     </div>
-  )
-}
+  )}
+
 
 export default Cards

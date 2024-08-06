@@ -10,6 +10,9 @@ const Part = async ({searchParams} : {
   }
 }) => {
   const come = await fetch('https://akil-backend.onrender.com/opportunities/search')
+  if (!come.ok){
+    return <div>network problem</div>
+  }
   const jobs = await come.json()
   console.log(jobs) 
   const num = Number(searchParams.id)
